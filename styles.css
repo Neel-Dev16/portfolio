@@ -457,6 +457,15 @@ textarea {
   min-width: max-content;
 }
 
+.marquee-item {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: clamp(3.5rem, 6vw, 5rem);
+  position: relative;
+}
+
 .marquee-track img,
 .marquee-track .ai-badge,
 .marquee-track .brand-badge {
@@ -478,6 +487,33 @@ textarea {
   filter: grayscale(0.04) saturate(1) brightness(1);
   opacity: 0.92;
   transform: translateY(-0.08rem);
+}
+
+.marquee-name {
+  color: #67e8f9;
+  font-size: clamp(0.72rem, 1.3vw, 0.95rem);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 0 18px rgba(103, 232, 249, 0.28);
+  transform: translateY(-0.15rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.marquee-item:hover img,
+.marquee-item:focus-within img {
+  filter: grayscale(0.04) saturate(1) brightness(1);
+  opacity: 0.92;
+  transform: translateY(-0.08rem);
+}
+
+.marquee-item:hover .marquee-name,
+.marquee-item:focus-within .marquee-name {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .marquee-track .ai-badge,

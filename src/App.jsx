@@ -207,7 +207,10 @@ function Hero() {
         <a className="tech-marquee" href="#skills" aria-label="View skills section">
           <div className="marquee-track">
             {loopedSkills.map(([name, src], index) => (
-              <img key={`${name}-${index}`} src={src} alt={name} />
+              <span className="marquee-item" key={`${name}-${index}`}>
+                <img src={src} alt={name} />
+                <span className="marquee-name">{name}</span>
+              </span>
             ))}
           </div>
         </a>
