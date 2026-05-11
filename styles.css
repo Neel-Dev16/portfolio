@@ -439,9 +439,9 @@ textarea {
 
 .marquee-track img {
   display: block;
-  height: clamp(3.4rem, 8vw, 6rem);
+  height: clamp(2.5rem, 5vw, 3.8rem);
   object-fit: contain;
-  width: clamp(3.4rem, 8vw, 6rem);
+  width: clamp(2.5rem, 5vw, 3.8rem);
 }
 
 .marquee-track span,
@@ -910,18 +910,44 @@ textarea {
 }
 
 footer {
-  align-items: center;
+  align-items: flex-start;
   border-top: 1px solid var(--line);
   color: var(--muted);
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: space-between;
-  padding: 2rem 5vw 6rem;
+  padding: 2rem 5vw 6.25rem;
 }
 
-footer div {
+.footer-identity {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.footer-identity p {
+  color: #dbe6f8;
+  font-weight: 800;
+  margin: 0;
+}
+
+.footer-identity span {
+  font-size: 0.9rem;
+}
+
+.footer-contact {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: flex-end;
+}
+
+.footer-contact a {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-contact a:hover {
+  color: #dbe6f8;
 }
 
 .bottom-nav {
