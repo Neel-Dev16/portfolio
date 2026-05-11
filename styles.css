@@ -458,14 +458,16 @@ textarea {
 }
 
 .marquee-track img,
-.marquee-track .ai-badge {
+.marquee-track .ai-badge,
+.marquee-track .brand-badge {
   display: block;
   height: clamp(2.5rem, 5vw, 3.8rem);
   object-fit: contain;
   width: clamp(2.5rem, 5vw, 3.8rem);
 }
 
-.marquee-track .ai-badge {
+.marquee-track .ai-badge,
+.marquee-track .brand-badge {
   align-items: center;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--line);
@@ -479,6 +481,19 @@ textarea {
   padding: 0 0.45rem;
   text-align: center;
   width: clamp(4rem, 7vw, 5.6rem);
+}
+
+.marquee-track .openai-mark {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-size: clamp(0.68rem, 1.2vw, 0.86rem);
+}
+
+.marquee-track .hf-mark {
+  background: rgba(255, 210, 30, 0.14);
+  border-color: rgba(255, 210, 30, 0.28);
+  color: #ffe28a;
+  font-size: clamp(0.78rem, 1.4vw, 1rem);
 }
 
 .marquee-track span,
@@ -561,6 +576,13 @@ textarea {
   margin-top: 2rem;
 }
 
+.skills-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
 .skills-intro {
   color: var(--muted);
   font-size: 1.05rem;
@@ -596,9 +618,15 @@ textarea {
 }
 
 .expertise-card h3 {
-  font-size: 1rem;
-  margin: 0.75rem 0 1rem;
-  text-transform: lowercase;
+  font-size: 1.05rem;
+  margin: 0 0 0.9rem;
+}
+
+.expertise-card p {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin: 0;
 }
 
 .pill-list,
@@ -1132,6 +1160,7 @@ footer {
   }
 
   .expertise-grid,
+  .skills-grid,
   .project-grid {
     grid-template-columns: 1fr;
   }
