@@ -483,19 +483,6 @@ textarea {
   width: clamp(4rem, 7vw, 5.6rem);
 }
 
-.marquee-track .openai-mark {
-  background: rgba(255, 255, 255, 0.1);
-  color: #f8fafc;
-  font-size: clamp(0.68rem, 1.2vw, 0.86rem);
-}
-
-.marquee-track .hf-mark {
-  background: rgba(255, 210, 30, 0.14);
-  border-color: rgba(255, 210, 30, 0.28);
-  color: #ffe28a;
-  font-size: clamp(0.78rem, 1.4vw, 1rem);
-}
-
 .marquee-track span,
 .tags span,
 .pill-list span {
@@ -618,8 +605,16 @@ textarea {
 }
 
 .expertise-card h3 {
+  align-items: center;
+  display: flex;
   font-size: 1.05rem;
+  gap: 0.55rem;
   margin: 0 0 0.9rem;
+}
+
+.expertise-card h3 .material-symbol {
+  color: var(--blue);
+  font-size: 1.25rem;
 }
 
 .expertise-card p {
@@ -627,6 +622,24 @@ textarea {
   font-size: 0.98rem;
   line-height: 1.75;
   margin: 0;
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 0.75rem;
+}
+
+.skill-pills span {
+  background: rgba(8, 15, 27, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 999px;
+  color: #d7e0ee;
+  display: inline-flex;
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.1;
+  padding: 0.62rem 0.95rem;
 }
 
 .pill-list,
