@@ -911,52 +911,36 @@ textarea {
 
 footer {
   align-items: center;
-  border-top: 1px solid var(--line);
+  border-top: 0;
   color: var(--muted);
   display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  padding: 1rem 5vw 5.25rem;
+  justify-content: center;
+  padding: 1.25rem 5vw 5.25rem;
 }
 
-.footer-meta {
-  display: grid;
-  gap: 0.05rem;
-}
-
-.footer-meta p {
-  color: #dbe6f8;
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.footer-meta span {
-  font-size: 0.78rem;
-}
-
-.footer-contact {
+.footer-bar {
   align-items: center;
+  background: rgba(255, 255, 255, 0.035);
+  border-top: 1px solid var(--line);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem 0.8rem;
-  justify-content: flex-end;
+  gap: 0.9rem 1.7rem;
+  justify-content: center;
+  max-width: 62rem;
+  padding: 1.05rem 1.5rem;
+  width: min(100%, 62rem);
 }
 
-.footer-contact span {
-  color: #6f7d91;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.footer-contact a {
+.footer-bar a,
+.footer-bar span {
   color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.footer-contact a:hover {
+.footer-bar a:hover {
   color: #dbe6f8;
 }
 
@@ -1001,11 +985,6 @@ footer {
 
   .quick-links a:first-child {
     grid-column: 1 / -1;
-  }
-
-  footer {
-    align-items: flex-start;
-    flex-direction: column;
   }
 
   .bottom-nav {
