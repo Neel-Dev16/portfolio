@@ -450,7 +450,7 @@ textarea {
 }
 
 .marquee-track {
-  animation: marquee 26s linear infinite;
+  animation: marquee 42s linear infinite;
   align-items: center;
   display: flex;
   gap: clamp(2rem, 6vw, 5rem);
@@ -1038,7 +1038,8 @@ footer {
 }
 
 .bottom-nav .material-symbol,
-.bottom-nav .social-mark {
+.bottom-nav .social-mark,
+.bottom-nav .social-icon {
   align-items: center;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
   border: 1px solid var(--line);
@@ -1069,6 +1070,11 @@ footer {
   text-transform: uppercase;
 }
 
+.bottom-nav .social-icon {
+  object-fit: contain;
+  padding: 0.66rem;
+}
+
 .bottom-nav a:hover {
   color: #dbe6f8;
   transform: translateY(-0.25rem);
@@ -1081,7 +1087,8 @@ footer {
 }
 
 .bottom-nav a:hover .material-symbol,
-.bottom-nav a:hover .social-mark {
+.bottom-nav a:hover .social-mark,
+.bottom-nav a:hover .social-icon {
   background: linear-gradient(180deg, rgba(59, 130, 246, 0.26), rgba(255, 255, 255, 0.08));
   border-color: rgba(96, 165, 250, 0.55);
   box-shadow:
