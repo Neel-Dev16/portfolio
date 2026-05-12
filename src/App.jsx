@@ -128,29 +128,36 @@ const projects = [
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
     return () => document.body.classList.remove("menu-open");
   }, [menuOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header${isScrolled ? " scrolled" : ""}`}>
         <a className="logo" href="#home" aria-label="Neel Harip home">
           NH
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#skills">Skills</a>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#experiences">Experiences</a>
           <a href="#projects">Projects</a>
-          <a href={resumePath} target="_blank" rel="noreferrer">
-            Resume
-          </a>
         </nav>
         <a className="header-contact" href={`mailto:${primaryEmail}`}>
-          Contact Me
+          Let's Talk
         </a>
         <button
           className="menu-button"
@@ -168,29 +175,94 @@ function Header() {
         <a href="#home" onClick={closeMenu}>
           Home
         </a>
-        <a href="#skills" onClick={closeMenu}>
-          Skills
+        <a href="#about" onClick={closeMenu}>
+          About
+        </a>
+        <a href="#experiences" onClick={closeMenu}>
+          Experiences
         </a>
         <a href="#projects" onClick={closeMenu}>
           Projects
         </a>
-        <a href={resumePath} target="_blank" rel="noreferrer" onClick={closeMenu}>
-          Resume
+        <a href={`mailto:${primaryEmail}`} onClick={closeMenu}>
+          Let's Talk
         </a>
       </nav>
     </>
   );
 }
 
+function TypewriterTitle() {
+  const titles = ["Software Developer", "Full Stack Developer", "AI Engineer", "Backend Developer"];
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState(titles[0]);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentTitle = titles[titleIndex];
+    const isComplete = displayText === currentTitle;
+    const isEmpty = displayText === "";
+    const delay = isComplete && !isDeleting ? 1300 : isDeleting ? 42 : 82;
+
+    const timeout = setTimeout(() => {
+      if (isComplete && !isDeleting) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isEmpty && isDeleting) {
+        setIsDeleting(false);
+        setTitleIndex((index) => (index + 1) % titles.length);
+        return;
+      }
+
+      setDisplayText((text) =>
+        isDeleting ? currentTitle.slice(0, text.length - 1) : currentTitle.slice(0, text.length + 1),
+      );
+    }, delay);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, titleIndex]);
+
+  return (
+    <h2 className="typewriter-title">
+      {displayText}
+      <span aria-hidden="true" className="typewriter-cursor"></span>
+    </h2>
+  );
+}
+
 function Hero() {
   const loopedSkills = [...marqueeSkills, ...marqueeSkills];
+  const [photoError, setPhotoError] = useState(false);
 
   return (
     <section className="hero section" id="home">
+      <div className="hero-visual" aria-label="Profile photo">
+        <div className="portrait-card">
+          <div className="portrait-frame">
+            {!photoError ? (
+              <img
+                className="profile-photo"
+                src="/assets/profile.jpg"
+                alt="Neel Harip"
+                onError={() => setPhotoError(true)}
+              />
+            ) : (
+              <div className="avatar">NH</div>
+            )}
+          </div>
+        </div>
+      </div>
       <div className="hero-copy">
         <span className="availability">Available for hire</span>
-        <h1>Neel | Portfolio</h1>
-        <h2>Full Stack Developer.</h2>
+        <h1>
+          <span className="hero-line">
+            Hi, I'm <span className="hero-name">Neel!</span>
+          </span>
+          <span className="hero-line hero-greeting-tail">Nice to meet you</span>
+        </h1>
+        <TypewriterTitle />
         <p>
           I build production-ready web platforms, backend services, and applied AI systems that turn
           complex data into fast, useful digital products.
@@ -221,7 +293,7 @@ function Hero() {
 
 function Statement() {
   return (
-    <section className="statement section">
+    <section className="statement section" id="about">
       <div className="statement-copy">
         <h2>
           Thoughtful engineering <span>Built with precision</span>
@@ -280,7 +352,7 @@ function Skills() {
 
 function Timeline() {
   return (
-    <section className="timeline-section section">
+    <section className="timeline-section section" id="experiences">
       <div className="section-heading">
         <h2>Work History</h2>
       </div>
@@ -431,6 +503,11 @@ export default function App() {
   return (
     <>
       <div className="page-noise" aria-hidden="true"></div>
+      <div className="snowfall" aria-hidden="true">
+        <span className="snow-layer snow-layer-a"></span>
+        <span className="snow-layer snow-layer-b"></span>
+        <span className="snow-layer snow-layer-c"></span>
+      </div>
       <Header />
       <main>
         <Hero />
